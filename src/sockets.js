@@ -16,15 +16,15 @@ export const init = (app) => {
               io.emit('producto-update', [product]);
             }
         });
-       socket.on('inicio-productos', async() => {
-           console.log('inicio lista de productos productos');
-           const productos = await productController.leer();
-           console.log(productos);
-           if (productos.length > 0) {
-               io.emit('producto-update', productos);
-            }
-        });
-    });
+        socket.on('inicio-productos', async() => {
+            console.log('inicio lista de productos productos');
+            const productos = await productController.leer();
+            console.log(productos);
+            if (productos.length > 0) {
+              socket.emit('producto-update', productos);
+             }
+         });
+      });
 
   return io;
 };

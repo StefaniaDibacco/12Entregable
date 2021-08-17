@@ -4,7 +4,7 @@ const socket = io.connect();
 socket.emit('inicio-productos');
 
 socket.on('producto-update', (products) => {
-    products.foreach((product) => {
+    products.forEach((product) => {
         addTr(product);
         console.log(product)
     });
